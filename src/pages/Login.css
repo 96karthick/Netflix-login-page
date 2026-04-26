@@ -1,3 +1,4 @@
+import "./Login.css";
 .login {
   height: 100vh;
   background: url("https://assets.nflxext.com/ffe/siteui/vlv3/9b5d3f4f-bg.jpg")
