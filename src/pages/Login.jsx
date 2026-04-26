@@ -1,50 +1,34 @@
-import "./Login.css";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
-  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();   // 👈 IMPORTANT
 
   const handleLogin = () => {
-    if (email.trim() === "" || password.trim() === "") {
-      alert("Please fill the column ⚠️");
-      return;
+    // simple login logic (you can customize)
+    if (password) {
+      navigate("/dashboard");   // 👈 THIS FIXES YOUR ISSUE
+    } else {
+      alert("Enter password");
     }
-   window.location.href = "/dashboard";
   };
 
   return (
-    <div className="login">
-      <div className="overlay"></div>
+    <div>
+      <input
+        type="password"
+        placeholder="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
 
-      <h1 className="logo">NETFLIX</h1>
-
-      <div className="login-box">
-        <h2>Sign In</h2>
-
-        <input
-          type="text"
-          placeholder="Email or mobile number"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-
-        <button className="signin-btn" onClick={handleLogin}>
-          Sign In
-        </button>
-
-        <p className="or">OR</p>
-        <button className="code-btn">Use a sign-in code</button>
-      </div>
+      <button className="signin-btn" onClick={handleLogin}>
+        Sign In
+      </button>
     </div>
   );
 }
 
 export default Login;
+
