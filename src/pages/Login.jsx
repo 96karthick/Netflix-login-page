@@ -1,32 +1,30 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
 function Login() {
-  const [password, setPassword] = useState("");
-  const navigate = useNavigate();   // 👈 IMPORTANT
-
-  const handleLogin = () => {
-    // simple login logic (you can customize)
-    if (password) {
-      navigate("/dashboard");   // 👈 THIS FIXES YOUR ISSUE
-    } else {
-      alert("Enter password");
-    }
-  };
-
   return (
-    <div>
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
+    <div className="login">
+      
+      <div className="overlay"></div>
+
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg"
+        alt="logo"
+        className="logo"
       />
 
-      <button className="signin-btn" onClick={handleLogin}>
-        Sign In
-      </button>
+      <div className="login-box">
+        <h2>Sign In</h2>
+
+        <input type="email" placeholder="Email" />
+        <input type="password" placeholder="Password" />
+
+        <button className="signin-btn">Sign In</button>
+
+        <p>Forgot Password?</p>
+        <hr />
+        <p>Create an Account</p>
+      </div>
+
     </div>
   );
 }
